@@ -18,9 +18,10 @@ assert!(vec.feq(&[1, 2, 3, 4, 5]));
 The benchmarking results for comparison of two `&[u8]` with a size of 256:
 
 ```
-running 2 tests
-test fast_compare  ... bench:          13 ns/iter (+/- 8) = 19692 MB/s
-test slice_compare ... bench:          34 ns/iter (+/- 4) = 7529 MB/s
+test fast_compare_equal    ... bench:          14 ns/iter (+/- 9) = 18285 MB/s
+test fast_compare_unequal  ... bench:          14 ns/iter (+/- 0) = 18285 MB/s
+test slice_compare_equal   ... bench:          35 ns/iter (+/- 29) = 7314 MB/s
+test slice_compare_unequal ... bench:          37 ns/iter (+/- 3) = 6918 MB/s
 ```
 
 ## Contributing
