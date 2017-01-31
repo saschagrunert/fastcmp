@@ -58,6 +58,6 @@ impl Compare for [u8] {
         let len = to.len();
 
         // Do the comparison
-        self.len() == len && slice_comare!(a, b, to, self, len)
+        self.len() == len && slice_compare!(a, b, to, self, len)
     }
 }

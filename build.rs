@@ -9,7 +9,7 @@ pub fn main() {
     let mut f = File::create(&dest_path).unwrap();
 
     // Generate the slice comparison source code
-    f.write_all(b"macro_rules! slice_comare (").unwrap();
+    f.write_all(b"macro_rules! slice_compare (").unwrap();
     f.write_all(b"($a:expr, $b:expr, $c:expr, $d:expr, $len:expr) => {{\n").unwrap();
     f.write_all(b"match $len {\n").unwrap();
 
