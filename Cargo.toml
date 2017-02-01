@@ -1,6 +1,6 @@
 [package]
 name = "fastcmp"
-version = "1.0.0"
+version = "1.0.1"
 authors = ["Sascha Grunert <mail@saschagrunert.de>"]
 license = "MIT"
 readme = "README.md"
@@ -10,6 +10,13 @@ homepage = "https://github.com/saschagrunert/fastcmp"
 documentation = "https://docs.rs/fastcmp"
 description = "A fast byte slice comparison library"
 build = "build.rs"
+categories = ["algorithms"]
+license-file = "LICENSE"
+
+[badges]
+travis-ci = { repository = "saschagrunert/fastcmp", branch = "master" }
+appveyor = { repository = "saschagrunert/fastcmp", branch = "master", service = "github" }
+
 
 [dev-dependencies]
 rand = "0"
