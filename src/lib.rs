@@ -11,29 +11,14 @@
 //! let vec = vec![1, 2, 3, 4, 5];
 //! assert!(vec.feq(&[1, 2, 3, 4, 5]));
 //! ```
+//#![feature(i128_type)]
 include!(concat!(env!("OUT_DIR"), "/compare.rs"));
-
-#[cfg(feature = "simd_support")]
-extern crate simd;
-
-#[cfg(feature = "simd_support")]
-use simd::u8x16;
 
 // The pointer compare macro with offset support
 macro_rules! cmp (
     ($left:expr, $right: expr, $var:ident, $offset:expr) => {
         unsafe {*($left.offset($offset) as *const $var) == *($right.offset($offset) as *const $var)}
     }
-);
-
-#[cfg(feature = "simd_support")]
-macro_rules! cmp_simd (
-    ($var:ident, $left:expr, $right:expr, $offset:expr) => { $var::load($left, $offset).eq($var::load($right, $offset)).all() }
-);
-
-#[cfg(feature = "simd_support")]
-macro_rules! cmp_u128 (
-    ($left:expr, $right:expr, $len:expr, $offset:expr) => { cmp_simd!(u8x16, $left, $right, $offset) }
 );
 
 /// Memory compare trait
@@ -58,6 +43,6 @@ impl Compare for [u8] {
         let len = to.len();
 
         // Do the comparison
-        self.len() == len && slice_compare!(a, b, to, self, len)
+        self.len() == len && slice_compare!(a, b, len)
     }
 }
